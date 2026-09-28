@@ -1,0 +1,25 @@
+{
+  "name": "@project/report-worker",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "build": "tsc",
+    "start": "bun run dist/index.js",
+    "test": "vitest",
+    "lint": "biome check .",
+    "lint:fix": "biome check . --write"
+  },
+  "dependencies": {
+    "nats": "^2.29.0",
+    "nodemailer": "^6.9.16"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.2",
+    "@types/node": "^20.0.0",
+    "@types/nodemailer": "^6.4.17",
+    "typescript": "^5.7.2",
+    "vitest": "^1.6.0",
+    "@biomejs/biome": "^2.5.13"
+  }
+}

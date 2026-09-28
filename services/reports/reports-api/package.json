@@ -1,0 +1,25 @@
+{
+  "name": "@project/reports-api",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "build": "tsc",
+    "start": "bun run dist/index.js",
+    "test": "vitest",
+    "lint": "biome check .",
+    "lint:fix": "biome check . --write"
+  },
+  "dependencies": {
+    "hono": "^4.0.0",
+    "jose": "^5.9.6",
+    "nats": "^2.29.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.2",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.7.2",
+    "vitest": "^1.6.0",
+    "@biomejs/biome": "^2.5.13"
+  }
+}

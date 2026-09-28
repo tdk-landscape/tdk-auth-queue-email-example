@@ -1,0 +1,12 @@
+{
+    "appName": "auth-emulator",
+    "appType": "backend",
+    "stack": "identity",
+    "port": 4400,
+    "dependsOn": [],
+    "healthCheckPath": "/health",
+    "params": {
+        "OIDC_PUBLIC_ISSUER": "http://api.tdk-auth-queue-email-example.localhost/api/auth-emulator",
+        "OIDC_AUDIENCE": "reports-api"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "appName": "reports-api",
+    "appType": "backend",
+    "stack": "reports",
+    "port": 4410,
+    "featuresEnabled": ["nats"],
+    "dependsOn": ["auth-emulator"],
+    "healthCheckPath": "/health",
+    "params": {
+        "OIDC_ISSUER": "http://api.tdk-auth-queue-email-example.localhost/api/auth-emulator",
+        "OIDC_JWKS_URL": "http://auth-emulator:4400/.well-known/jwks.json",
+        "OIDC_AUDIENCE": "reports-api"
+    }
+}

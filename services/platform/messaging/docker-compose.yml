@@ -1,0 +1,54 @@
+# Local stand-ins for two managed services:
+#   nats    -> the queue (SQS / Pub/Sub / Service Bus): NATS JetStream
+#   mailpit -> outbound email (SES / SendGrid): an SMTP server with an inbox UI
+#
+# TDK loads this file when it exists (engine: infra-loader.star). It does not
+# generate it. Names are fixed by TDK: the container must be called
+# <project>_nats (that is the host in TILT_NATS_URL), and the `redis` service
+# must exist because TDK registers both.
+services:
+  nats:
+    image: nats:2.10-alpine
+    container_name: tdk_auth_queue_email_example_nats
+    command: ["-js", "-sd", "/data", "-m", "8222"]
+    restart: unless-stopped
+    volumes:
+      - tdk_auth_queue_email_example_nats_data:/data
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8222/healthz | grep -q ok"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  # Catches every email the worker sends. Inbox: http://localhost:8025
+  mailpit:
+    image: axllent/mailpit:v1.21
+    container_name: tdk_auth_queue_email_example_mailpit
+    restart: unless-stopped
+    ports:
+      - "8025:8025"
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "/mailpit", "readyz"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  # Registered by TDK but never started (auto_init=False). Kept so the file loads.
+  redis:
+    image: redis:7-alpine
+    container_name: tdk_auth_queue_email_example_redis
+    restart: unless-stopped
+    networks:
+      - backend
+
+volumes:
+  tdk_auth_queue_email_example_nats_data:
+
+networks:
+  backend:
+    name: tdk_auth_queue_email_example_backend
+    external: true
