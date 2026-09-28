@@ -28,7 +28,7 @@ This example answers that with one small app: sign in, click **Email me a usage 
 
 ## Run it
 
-> **Requires TDK CLI 1.3.75 or newer** (the Vue frontend needs `"framework": "vue"`). Prerequisites: Docker running, [Tilt](https://docs.tilt.dev/install.html), [Bun](https://bun.sh/docs/installation) and the [TDK CLI](https://github.com/tdk-landscape/tdk-cli-core#installation).
+> **Requires TDK CLI 1.3.76 or newer** (1.3.75 for the Vue frontend's `"framework": "vue"`; 1.3.76 fixes `nats`/`mailpit` staying disabled, [tdk-cli-core#155](https://github.com/tdk-landscape/tdk-cli-core/issues/155)). Prerequisites: Docker running, [Tilt](https://docs.tilt.dev/install.html), [Bun](https://bun.sh/docs/installation) and the [TDK CLI](https://github.com/tdk-landscape/tdk-cli-core#installation).
 
 ```bash
 git clone https://github.com/tdk-landscape/tdk-auth-queue-email-example.git
@@ -38,15 +38,6 @@ tdk up
 ```
 
 The first start builds the images and takes a few minutes.
-
-> [!WARNING]
-> **Known issue, [tdk-cli-core#155](https://github.com/tdk-landscape/tdk-cli-core/issues/155):** `tdk up` currently starts the apps but leaves `nats` and `mailpit` disabled in Tilt. Enable them once, and the worker connects on its next retry:
->
-> ```bash
-> tilt enable nats mailpit
-> ```
->
-> You can also click **Enable** on both in the Tilt UI (`http://localhost:10350`). If Tilt says that port is taken, `tdk up` printed the port it picked instead.
 
 | Resource | Type | Stack | URL |
 | --- | --- | --- | --- |
