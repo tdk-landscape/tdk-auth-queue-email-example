@@ -2,6 +2,7 @@
 # SYSTEM-GENERATED - DO NOT EDIT
 # Stack feature: database-management
 # Source: .tdk/project.json phases.*.enabledStacks includes "database-management"
+# Regenerate with: tdk config regenerate
 ###############################################################################
 
 services:
@@ -14,7 +15,7 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: postgres
     ports:
-      - "5432:5432"
+      - "${TDK_BIND_ADDRESS:-127.0.0.1}:${TDK_POSTGRES_PORT:-15432}:5432"
     volumes:
       - tdk_auth_queue_email_example_postgres_data:/var/lib/postgresql/data
     networks:

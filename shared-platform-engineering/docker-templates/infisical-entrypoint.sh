@@ -1,4 +1,6 @@
 #!/bin/sh
+# Copyright (c) 2026 TDK Landscape contributors
+# SPDX-License-Identifier: MIT
 # =============================================================================
 # 🔐 UNIVERSAL INFISICAL ENTRYPOINT - Zero-Code Secret Injection
 # =============================================================================
