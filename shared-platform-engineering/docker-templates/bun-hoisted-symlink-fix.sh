@@ -1,4 +1,6 @@
 #!/bin/sh
+# Copyright (c) 2026 TDK Landscape contributors
+# SPDX-License-Identifier: MIT
 set -e
 
 # Fix Bun hoisted package symlinks that can break when copied across Docker stages.

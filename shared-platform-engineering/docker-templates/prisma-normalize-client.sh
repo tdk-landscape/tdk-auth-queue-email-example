@@ -1,4 +1,6 @@
 #!/bin/sh
+# Copyright (c) 2026 TDK Landscape contributors
+# SPDX-License-Identifier: MIT
 set -e
 
 PRISMA_EXPORT_GENERATED_CLIENT="${PRISMA_EXPORT_GENERATED_CLIENT:-1}"
